@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.VisionCloud" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!--region Activity样式-->
+    <style name="SuperUI.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- 状态栏颜色 -->
+        <item name="android:statusBarColor" tools:targetApi="l">#fff</item>
     </style>
+    <!--endregion-->
 
-    <style name="Theme.VisionCloud" parent="Base.Theme.VisionCloud" />
 </resources>

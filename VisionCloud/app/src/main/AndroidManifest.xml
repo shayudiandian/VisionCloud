@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VisionCloud">
+        android:theme="@style/SuperUI.NoActionBar">
         <!--region 启动界面-->
         <activity
             android:name=".splash.SplashActivity"
