@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">VisionCloud</string>
+
+    <!--版权文本-->
+    <string name="copyright">Copyright © %1$d SYDD. All Rights Reserved</string>
 </resources>

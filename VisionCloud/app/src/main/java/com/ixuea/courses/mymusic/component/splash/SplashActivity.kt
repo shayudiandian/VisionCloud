@@ -1,7 +1,7 @@
-package com.ixuea.courses.mymusic.splash
+package com.ixuea.courses.mymusic.component.splash
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.ixuea.courses.mymusic.activity.BaseLogicActivity
 import com.ixuea.courses.mymusic.R
 import com.ixuea.superui.date.SuperDateUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
@@ -11,11 +11,14 @@ import com.ixuea.superui.util.SuperDarkUtil
 /**
  * 启动界面
  */
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseLogicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+    }
 
+    override fun initViews() {
+        super.initViews()
         //设置沉浸式状态栏
         QMUIStatusBarHelper.translucent(this)
 
@@ -26,8 +29,11 @@ class SplashActivity : AppCompatActivity() {
             //状态栏文字黑色
             QMUIStatusBarHelper.setStatusBarLightMode(this)
         }
+    }
 
-        //设置版本年份
-        findViewById<TextView>(R.id.copyright).text = "Copyright © ${SuperDateUtil.currentYear()} SYDD. All Rights Reserved"
+    override fun initDatum() {
+        super.initDatum()
+        //设置版本年份(这个找View应该放到initViews里，这里为了方便)
+        findViewById<TextView>(R.id.copyright).text = getString(R.string.copyright, SuperDateUtil.currentYear())
     }
 }
