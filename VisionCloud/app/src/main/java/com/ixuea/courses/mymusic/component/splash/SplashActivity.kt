@@ -8,6 +8,7 @@ import com.ixuea.superui.date.SuperDateUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import android.widget.TextView
 import com.ixuea.courses.mymusic.fragment.TermServiceDialogFragment
+import com.ixuea.courses.mymusic.util.DefaultPreferenceUtil
 import com.ixuea.superui.util.SuperDarkUtil
 
 /**
@@ -37,7 +38,13 @@ class SplashActivity : BaseLogicActivity() {
         super.initDatum()
         //设置版本年份(这个找View应该放到initViews里，这里为了方便)
         findViewById<TextView>(R.id.copyright).text = getString(R.string.copyright, SuperDateUtil.currentYear())
-        showTermsServiceAgreementDialog()
+
+        if (DefaultPreferenceUtil.getInstance(this).isAcceptTermsServiceAgreement) {
+            //用户已经同意了用户协议
+        } else {
+            //用户未同意用户协议
+            showTermsServiceAgreementDialog()
+        }
     }
 
 
@@ -49,7 +56,10 @@ class SplashActivity : BaseLogicActivity() {
 //
 //        })
         // Lambda
-        TermServiceDialogFragment.show(supportFragmentManager) { Log.d(TAG, "primary onClick") }
+        TermServiceDialogFragment.show(supportFragmentManager) {
+            Log.d(TAG, "primary onClick")
+            DefaultPreferenceUtil.getInstance(this).setAcceptTermsServiceAgreement()
+        }
     }
 
     companion object {
