@@ -1,5 +1,6 @@
 package com.ixuea.courses.mymusic.component.guide
 
+import android.util.Log
 import com.ixuea.courses.mymusic.activity.BaseViewModelActivity
 import com.ixuea.courses.mymusic.databinding.ActivityGuideBinding
 
@@ -10,5 +11,18 @@ import com.ixuea.courses.mymusic.databinding.ActivityGuideBinding
  * https://github.com/bingoogolapple/BGABanner-Android
  */
 class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
+    override fun initListeners() {
+        super.initListeners()
+        binding.btnLoginOrRegister.setOnClickListener {
+            Log.d(TAG, "btnLoginOrRegister click")
+        }
 
+        binding.btnExperienceNow.setOnClickListener {
+            Log.d(TAG, "btnExperienceNow click")
+        }
+    }
+
+    companion object {
+        const val TAG = "GuideActivity"
+    }
 }
