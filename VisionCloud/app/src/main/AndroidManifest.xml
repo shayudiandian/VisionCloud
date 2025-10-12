@@ -13,9 +13,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--
-使用的特性，如果在Google Play上浏览应用，如果当前设备不满足权限要求比如没有相机，就看不到这个应用；
--->
+    <!-- 使用的特性，如果在Google Play上浏览应用，如果当前设备不满足权限要求比如没有相机，就看不到这个应用； -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -35,7 +33,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SuperUI.NoActionBar">
-        <!--region 启动界面-->
+        <activity
+            android:name=".component.guide.GuideActivity"
+            android:exported="false" />
+        <!-- region 启动界面 -->
         <activity
             android:name=".component.splash.SplashActivity"
             android:exported="true">
@@ -44,12 +45,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--endregion-->
+        </activity> <!-- endregion -->
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

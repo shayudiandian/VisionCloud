@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import com.ixuea.courses.mymusic.R
 import com.ixuea.courses.mymusic.activity.BaseViewModelActivity
+import com.ixuea.courses.mymusic.component.guide.GuideActivity
 import com.ixuea.superui.date.SuperDateUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.ixuea.courses.mymusic.databinding.ActivitySplashBinding
@@ -85,6 +86,10 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
     private fun prepareNext() {
         Log.d(TAG, "prepareNext: ")
 
+//        val intent = Intent(this,GuideActivity::class.java)
+//        startActivity(intent)
+//        finish()
+        startActivityAfterFinishThis(GuideActivity::class.java)
     }
 
 

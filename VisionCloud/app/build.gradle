@@ -42,4 +42,7 @@ dependencies {
     implementation 'com.guolindev.permissionx:permissionx:1.8.1'
 
     implementation project(":super-k")
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
 }
