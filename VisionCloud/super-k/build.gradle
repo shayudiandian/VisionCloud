@@ -3,13 +3,13 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+//引入上层目录的common.gradle文件内容
+apply from: '../common.gradle'
+
 android {
     namespace 'com.ixuea.k'
-    compileSdk 36
 
     defaultConfig {
-        minSdk 24
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -19,13 +19,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = '11'
     }
 }
 

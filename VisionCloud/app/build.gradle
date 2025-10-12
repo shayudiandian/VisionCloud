@@ -3,14 +3,14 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+//引入上层目录的common.gradle文件内容
+apply from: '../common.gradle'
+
 android {
     namespace 'com.ixuea.courses.mymusic'
-    compileSdk 36
 
     defaultConfig {
         applicationId "com.ixuea.courses.mymusic"
-        minSdk 24
-        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -22,13 +22,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = '11'
     }
 
     viewBinding {
