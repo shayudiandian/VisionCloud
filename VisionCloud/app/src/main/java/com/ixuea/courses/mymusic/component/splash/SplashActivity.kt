@@ -11,6 +11,7 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.ixuea.courses.mymusic.databinding.ActivitySplashBinding
 import com.ixuea.courses.mymusic.fragment.TermServiceDialogFragment
 import com.ixuea.courses.mymusic.util.DefaultPreferenceUtil
+import com.ixuea.courses.mymusic.util.PreferenceUtil
 import com.ixuea.superui.util.SuperDarkUtil
 import com.permissionx.guolindev.PermissionX
 
@@ -89,7 +90,13 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
 //        val intent = Intent(this,GuideActivity::class.java)
 //        startActivity(intent)
 //        finish()
-        startActivityAfterFinishThis(GuideActivity::class.java)
+
+        if (PreferenceUtil.isShowGuide()) {
+            startActivityAfterFinishThis(GuideActivity::class.java)
+            return
+        }
+
+        //跳转到下一个界面
     }
 
 

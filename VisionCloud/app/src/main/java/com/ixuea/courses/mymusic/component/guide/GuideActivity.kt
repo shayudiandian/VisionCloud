@@ -3,6 +3,7 @@ package com.ixuea.courses.mymusic.component.guide
 import android.util.Log
 import com.ixuea.courses.mymusic.activity.BaseViewModelActivity
 import com.ixuea.courses.mymusic.databinding.ActivityGuideBinding
+import com.ixuea.courses.mymusic.util.PreferenceUtil
 
 
 /**
@@ -15,11 +16,17 @@ class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
         super.initListeners()
         binding.btnLoginOrRegister.setOnClickListener {
             Log.d(TAG, "btnLoginOrRegister click")
+            setShowGuide()
         }
 
         binding.btnExperienceNow.setOnClickListener {
             Log.d(TAG, "btnExperienceNow click")
+            setShowGuide()
         }
+    }
+
+    private fun setShowGuide() {
+        PreferenceUtil.setShowGuide(false)
     }
 
     companion object {

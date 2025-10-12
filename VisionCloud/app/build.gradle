@@ -42,7 +42,8 @@ dependencies {
     implementation 'com.guolindev.permissionx:permissionx:1.8.1'
 
     implementation project(":super-k")
-    implementation libs.androidx.appcompat
-    implementation libs.material
-    implementation libs.androidx.activity
+
+    //腾讯开源的高性能keyValue存储，用来替代系统的SharedPreferences
+    //https://github.com/Tencent/MMKV
+    implementation 'com.tencent:mmkv-static:2.2.4'
 }
