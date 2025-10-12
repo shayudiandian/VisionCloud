@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace 'com.ixuea.courses.mymusic'
+    namespace 'com.ixuea.k'
     compileSdk 36
 
     defaultConfig {
-        applicationId "com.ixuea.courses.mymusic"
         minSdk 24
-        targetSdk 36
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -30,12 +27,6 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
-
-    viewBinding {
-        //开启视图绑定，用来替代findViewById
-        //官方文档：https://developer.android.com/topic/libraries/view-binding
-        enabled = true
-    }
 }
 
 dependencies {
@@ -43,19 +34,7 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
-    implementation libs.androidx.activity
-    implementation libs.androidx.constraintlayout
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
-
-    //UI框架，主要是用他的工具类，也可以单独拷贝出来
-    //https://qmuiteam.com/android/get-started
-    implementation 'com.qmuiteam:qmui:2.1.0'
-
-    //权限框架
-    //https://github.com/guolindev/PermissionX
-    implementation 'com.guolindev.permissionx:permissionx:1.8.1'
-
-    implementation project(":super-k")
 }
