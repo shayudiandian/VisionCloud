@@ -3,6 +3,7 @@ package com.ixuea.courses.mymusic.component.splash
 import android.Manifest
 import android.os.Build
 import android.util.Log
+import com.ixuea.courses.mymusic.MainActivity
 import com.ixuea.courses.mymusic.R
 import com.ixuea.courses.mymusic.activity.BaseViewModelActivity
 import com.ixuea.courses.mymusic.component.guide.GuideActivity
@@ -73,7 +74,7 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
         }.request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
                     //权限都同意了（这样不太好）
-                    //这样可能看不到启动界面而直接进入下个界面，要延迟1s
+                    //这样可能看不到启动界面而直接进入主界面，要延迟1s
                     binding.root.postDelayed({
                         prepareNext()
                     }, 1000)
@@ -96,7 +97,8 @@ class SplashActivity : BaseViewModelActivity<ActivitySplashBinding>() {
             return
         }
 
-        //跳转到下一个界面
+        //跳转到主界面
+        startActivityAfterFinishThis(MainActivity::class.java)
     }
 
 
