@@ -4,22 +4,13 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.ixuea.courses.mymusic.adapter.BaseFragmentPagerAdapter
 
 /**
  * 引导界面适配器
  * FragmentStatePagerAdapter 过时的
  */
-class GuideAdapter(val context: Context, fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
-    private var datum: MutableList<Int> = mutableListOf()
-
-    /**
-     * 有多少个
-     *
-     * @return
-     */
-    override fun getCount(): Int {
-        return datum.size
-    }
+class GuideAdapter(context: Context, fragmentManager: FragmentManager) : BaseFragmentPagerAdapter<Int>(context, fragmentManager) {
 
     /**
      * 获取当前位置的数据
@@ -28,18 +19,6 @@ class GuideAdapter(val context: Context, fragmentManager: FragmentManager) : Fra
      * @return
      */
     override fun getItem(position: Int): Fragment {
-        return GuideFragment.newInstance(datum[position])
-    }
-
-    /**
-     * 设置数据
-     *
-     * @param datum
-     */
-    fun setDatum(datum: MutableList<Int>) {
-        this.datum.clear()
-        this.datum.addAll(datum)
-        // 刷新
-        notifyDataSetChanged()
+        return GuideFragment.newInstance(getData(position))
     }
 }
