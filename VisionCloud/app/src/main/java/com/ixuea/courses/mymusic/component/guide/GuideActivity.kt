@@ -5,9 +5,16 @@ import android.util.Log
 import com.ixuea.courses.mymusic.MainActivity
 import com.ixuea.courses.mymusic.R
 import com.ixuea.courses.mymusic.activity.BaseViewModelActivity
+import com.ixuea.courses.mymusic.config.Config
 import com.ixuea.courses.mymusic.databinding.ActivityGuideBinding
 import com.ixuea.courses.mymusic.util.Constant
 import com.ixuea.courses.mymusic.util.PreferenceUtil
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import java.io.IOException
 
 
 /**
@@ -57,7 +64,30 @@ class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
             Log.d(TAG, "btnExperienceNow click")
             setShowGuide()
             startActivityAfterFinishThis(MainActivity::class.java)
+            //测试一下
+            testGet()
         }
+    }
+
+    private fun testGet() {
+        val client = OkHttpClient()
+
+        val url = Config.ENDPOINT + "v1/contents"
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e(TAG, "onFailure: " + e.localizedMessage)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                Log.d(TAG, "onResponse: " + response.body!!.string())
+            }
+
+        })
     }
 
     private fun setShowGuide() {
